@@ -37,22 +37,22 @@ namespace task_3_vkluchite_svet
             // Перемещение окна Form1 по периметру экрана, по часовой стрелке.
             while (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width)
             {
-                this.Location = new Point(this.Location.X + 5, this.Location.Y);
+                this.Location = new Point(this.Location.X + 10, this.Location.Y);
                 Thread.Sleep(1);
             }
             while (this.Location.Y < Screen.PrimaryScreen.Bounds.Height - this.Height)
             {
-                this.Location = new Point(this.Location.X, this.Location.Y + 5);
+                this.Location = new Point(this.Location.X, this.Location.Y + 10);
                 Thread.Sleep(1);
             }
             while (this.Location.X > 0)
             {
-                this.Location = new Point(this.Location.X - 5, this.Location.Y);
+                this.Location = new Point(this.Location.X - 10, this.Location.Y);
                 Thread.Sleep(1);
             }
             while (this.Location.Y > 0)
             {
-                this.Location = new Point(this.Location.X, this.Location.Y - 5);
+                this.Location = new Point(this.Location.X, this.Location.Y - 10);
                 Thread.Sleep(1);
             }
         }
