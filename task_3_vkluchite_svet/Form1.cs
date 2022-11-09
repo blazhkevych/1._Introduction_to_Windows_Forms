@@ -19,6 +19,10 @@ namespace task_3_vkluchite_svet
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                this.Location = new Point(0, 0);
+                this.Size = new Size(300, 300);
+                this.BackColor = Color.Red;
+                this.TopMost = true;
                 timer1.Start();
             }
             if (e.KeyChar == (char)Keys.Escape)
@@ -28,33 +32,19 @@ namespace task_3_vkluchite_svet
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Text = DateTime.Now.ToString();
-
-            this.Location = new Point(0, 0);
-            this.Size = new Size(300, 300);
-            this.BackColor = Color.Red;
-            this.TopMost = true;
+            int step = 100;
 
             // Перемещение окна Form1 по периметру экрана, по часовой стрелке.
-            while (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width)
+            if (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width &&
+                this.Location.Y == 0)
             {
-                this.Location = new Point(this.Location.X + 10, this.Location.Y);
-                Thread.Sleep(1);
+                if ((this.Location.X + step + 300) < Screen.PrimaryScreen.Bounds.Width) // Если шаг не превышает ширину экрана
+                    this.Location = new Point(this.Location.X + step, this.Location.Y);
+                else
+                    this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
             }
-            while (this.Location.Y < Screen.PrimaryScreen.Bounds.Height - this.Height)
-            {
-                this.Location = new Point(this.Location.X, this.Location.Y + 10);
-                Thread.Sleep(1);
-            }
-            while (this.Location.X > 0)
-            {
-                this.Location = new Point(this.Location.X - 10, this.Location.Y);
-                Thread.Sleep(1);
-            }
-            while (this.Location.Y > 0)
-            {
-                this.Location = new Point(this.Location.X, this.Location.Y - 10);
-                Thread.Sleep(1);
-            }
+
+
         }
     }
 }
