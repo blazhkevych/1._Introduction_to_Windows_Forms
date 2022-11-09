@@ -32,19 +32,37 @@ namespace task_3_vkluchite_svet
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Text = DateTime.Now.ToString();
-            int step = 100;
+            int step = 10;
 
             // Перемещение окна Form1 по периметру экрана, по часовой стрелке.
-            if (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width &&
-                this.Location.Y == 0)
+            if (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width && this.Location.Y == 0)
             {
-                if ((this.Location.X + step + 300) < Screen.PrimaryScreen.Bounds.Width) // Если шаг не превышает ширину экрана
+                if ((this.Location.X + step + 300) < Screen.PrimaryScreen.Bounds.Width)     // Если шаг не превышает ширину экрана.
                     this.Location = new Point(this.Location.X + step, this.Location.Y);
-                else
+                else                                                                        // Если шаг превышает ширину экрана.
                     this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
             }
-
-
+            else if (this.Location.X == Screen.PrimaryScreen.Bounds.Width - this.Width && this.Location.Y < Screen.PrimaryScreen.Bounds.Height - this.Height)
+            {
+                if ((this.Location.Y + step + 300) < Screen.PrimaryScreen.Bounds.Height)    // Если шаг не превышает высоту экрана.
+                    this.Location = new Point(this.Location.X, this.Location.Y + step);
+                else                                                                        // Если шаг превышает высоту экрана.
+                    this.Location = new Point(this.Location.X, Screen.PrimaryScreen.Bounds.Height - this.Height);
+            }
+            else if (this.Location.X > 0 && this.Location.Y == Screen.PrimaryScreen.Bounds.Height - this.Height)
+            {
+                if ((this.Location.X - step) > 0)                                           // Если шаг не превышает ширину экрана.
+                    this.Location = new Point(this.Location.X - step, this.Location.Y);
+                else                                                                        // Если шаг превышает ширину экрана.
+                    this.Location = new Point(0, this.Location.Y);
+            }
+            else if (this.Location.X == 0 && this.Location.Y > 0)
+            {
+                if ((this.Location.Y - step) > 0)                                           // Если шаг не превышает высоту экрана.
+                    this.Location = new Point(this.Location.X, this.Location.Y - step);
+                else                                                                        // Если шаг превышает высоту экрана.
+                    this.Location = new Point(this.Location.X, 0);
+            }
         }
     }
 }
