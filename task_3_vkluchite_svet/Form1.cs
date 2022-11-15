@@ -1,14 +1,14 @@
-namespace task_3_vkluchite_svet
+п»їnamespace task_3_vkluchite_svet
 {
     public partial class Form1 : Form
     {
         /// <summary>
-        /// 3. Написать приложение, обладающее следующей 
-        /// функциональностью: 
-        /// * при нажатии клавиши Enter главное окно позиционируется в 
-        /// левый верхний угол экрана с размерами (300х300) и начинает 
-        /// перемещаться по периметру экрана с определённой скоростью;
-        /// * при нажатии клавиши Esc перемещение окна прекращается
+        /// 3. РќР°РїРёСЃР°С‚СЊ РїСЂРёР»РѕР¶РµРЅРёРµ, РѕР±Р»Р°РґР°СЋС‰РµРµ СЃР»РµРґСѓСЋС‰РµР№ 
+        /// С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅРѕСЃС‚СЊСЋ: 
+        /// * РїСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё Enter РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ РїРѕР·РёС†РёРѕРЅРёСЂСѓРµС‚СЃСЏ РІ 
+        /// Р»РµРІС‹Р№ РІРµСЂС…РЅРёР№ СѓРіРѕР» СЌРєСЂР°РЅР° СЃ СЂР°Р·РјРµСЂР°РјРё (300С…300) Рё РЅР°С‡РёРЅР°РµС‚ 
+        /// РїРµСЂРµРјРµС‰Р°С‚СЊСЃСЏ РїРѕ РїРµСЂРёРјРµС‚СЂСѓ СЌРєСЂР°РЅР° СЃ РѕРїСЂРµРґРµР»С‘РЅРЅРѕР№ СЃРєРѕСЂРѕСЃС‚СЊСЋ;
+        /// * РїСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё Esc РїРµСЂРµРјРµС‰РµРЅРёРµ РѕРєРЅР° РїСЂРµРєСЂР°С‰Р°РµС‚СЃСЏ
         /// </summary>
         public Form1()
         {
@@ -34,33 +34,33 @@ namespace task_3_vkluchite_svet
             this.Text = DateTime.Now.ToString();
             int step = 10;
 
-            // Перемещение окна Form1 по периметру экрана, по часовой стрелке.
+            // РџРµСЂРµРјРµС‰РµРЅРёРµ РѕРєРЅР° Form1 РїРѕ РїРµСЂРёРјРµС‚СЂСѓ СЌРєСЂР°РЅР°, РїРѕ С‡Р°СЃРѕРІРѕР№ СЃС‚СЂРµР»РєРµ.
             if (this.Location.X < Screen.PrimaryScreen.Bounds.Width - this.Width && this.Location.Y == 0)
             {
-                if ((this.Location.X + step + 300) < Screen.PrimaryScreen.Bounds.Width)     // Если шаг не превышает ширину экрана.
+                if ((this.Location.X + step + 300) < Screen.PrimaryScreen.Bounds.Width)     // Р•СЃР»Рё С€Р°Рі РЅРµ РїСЂРµРІС‹С€Р°РµС‚ С€РёСЂРёРЅСѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X + step, this.Location.Y);
-                else                                                                        // Если шаг превышает ширину экрана.
+                else                                                                        // Р•СЃР»Рё С€Р°Рі РїСЂРµРІС‹С€Р°РµС‚ С€РёСЂРёРЅСѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
             }
             else if (this.Location.X == Screen.PrimaryScreen.Bounds.Width - this.Width && this.Location.Y < Screen.PrimaryScreen.Bounds.Height - this.Height)
             {
-                if ((this.Location.Y + step + 300) < Screen.PrimaryScreen.Bounds.Height)    // Если шаг не превышает высоту экрана.
+                if ((this.Location.Y + step + 300) < Screen.PrimaryScreen.Bounds.Height)    // Р•СЃР»Рё С€Р°Рі РЅРµ РїСЂРµРІС‹С€Р°РµС‚ РІС‹СЃРѕС‚Сѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X, this.Location.Y + step);
-                else                                                                        // Если шаг превышает высоту экрана.
+                else                                                                        // Р•СЃР»Рё С€Р°Рі РїСЂРµРІС‹С€Р°РµС‚ РІС‹СЃРѕС‚Сѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X, Screen.PrimaryScreen.Bounds.Height - this.Height);
             }
             else if (this.Location.X > 0 && this.Location.Y == Screen.PrimaryScreen.Bounds.Height - this.Height)
             {
-                if ((this.Location.X - step) > 0)                                           // Если шаг не превышает ширину экрана.
+                if ((this.Location.X - step) > 0)                                           // Р•СЃР»Рё С€Р°Рі РЅРµ РїСЂРµРІС‹С€Р°РµС‚ С€РёСЂРёРЅСѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X - step, this.Location.Y);
-                else                                                                        // Если шаг превышает ширину экрана.
+                else                                                                        // Р•СЃР»Рё С€Р°Рі РїСЂРµРІС‹С€Р°РµС‚ С€РёСЂРёРЅСѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(0, this.Location.Y);
             }
             else if (this.Location.X == 0 && this.Location.Y > 0)
             {
-                if ((this.Location.Y - step) > 0)                                           // Если шаг не превышает высоту экрана.
+                if ((this.Location.Y - step) > 0)                                           // Р•СЃР»Рё С€Р°Рі РЅРµ РїСЂРµРІС‹С€Р°РµС‚ РІС‹СЃРѕС‚Сѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X, this.Location.Y - step);
-                else                                                                        // Если шаг превышает высоту экрана.
+                else                                                                        // Р•СЃР»Рё С€Р°Рі РїСЂРµРІС‹С€Р°РµС‚ РІС‹СЃРѕС‚Сѓ СЌРєСЂР°РЅР°.
                     this.Location = new Point(this.Location.X, 0);
             }
         }
